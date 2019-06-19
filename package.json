@@ -1,0 +1,22 @@
+{
+  "name": "monitor",
+  "version": "1.0.0",
+  "description": "## 專案簡介 - 隨著部署/管理 伺服器的增加，對於一天只有24小時的猴子，無法實時知道伺服器的狀態，但隨著猴子的進化，還有更強大的猴子開發了強大的工具——「Prometheus」、「Grafana」。     - - [x] 可針監控Service     - - [x] 可監控伺服器狀況     - - [x] 視覺化呈現監控結果     - …… - 手機不離手，搭配IM的使用，猴子的可用時間又多了一點！     - - [x] Telegram Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NCNU-OpenSource/Monitoring-Server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NCNU-OpenSource/Monitoring-Server/issues"
+  },
+  "homepage": "https://github.com/NCNU-OpenSource/Monitoring-Server#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
