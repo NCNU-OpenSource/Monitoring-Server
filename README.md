@@ -12,7 +12,7 @@
 ### 科普
 **Prometheus** 是一個基於 Golang 語言所撰寫的服務效能測量監控系統，透過 HTTP 協定從遠方機器收集數據，被監控的伺服器則需要安裝 exporter 來收集監控數據。
 
-**Grafana** 是一個開源數據視覺化平台,可搭配 Prometheus 使用。
+**Grafana** 是一個開源數據視覺化平台可搭配 Prometheus 使用。
 
 ## 安裝過程
 
