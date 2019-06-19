@@ -168,6 +168,50 @@ curl -X POST -H  "Content-Type: text/plain" --data "$var
 " http://localhost:9091/metrics/job/memory/instance/main_server
 ```
 
+## 範例 API
+方便檢測監控 server 的 CPU/Memory 使用狀況
+
+### express_sample
+- {YOUR_IP}:3001/ ： 簡單 hash 計算
+- {YOUR_IP}:3001/mem ： 使用 Buffer 佔用記憶體空間
+
+### Install & Usage
+```
+npm install
+
+node index.js
+```
+
+
+### autocannon
+壓力測試
+
+#### Install
+```
+npm install autocannon -g
+```
+
+#### Use
+```
+autocannon -c 100 -d 10 -p 2 http://127.0.0.1:3001/
+```
+
+參數說明
+```
+-c/--connections NUM
+    The number of concurrent connections to use. default: 10.
+-p/--pipelining NUM
+    The number of pipelined requests to use. default: 1.
+-d/--duration SEC
+    The number of seconds to run the autocannnon. default: 10.
+-m/--method
+    HTTP METHOD
+-b/--body BODY
+    The body of the request.
+	Note: This option needs to be used with the '-H/--headers' option in some frameworks
+```
+
+
 ## 分工
 - [李禹叡]()：PromQL
 - [王俊傑]()：部署環境及測試
