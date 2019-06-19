@@ -9,6 +9,10 @@
 - 手機不離手，搭配IM的使用，猴子的可用時間又多了一點！
     - - [x] Telegram Bot
 
+### 科普
+**Prometheus** 是一個基於 Golang 語言所撰寫的服務效能測量監控系統，透過 HTTP 協定從遠方機器收集數據，被監控的伺服器則需要安裝 exporter 來收集監控數據。
+
+**Grafana** 是一個開源數據視覺化平台,可搭配 Prometheus 使用。
 
 ## 安裝過程
 
@@ -28,16 +32,62 @@ cd prometheus-2.10.0.linux-amd64
 ```
 3. 執行 prometheus (背景執行)
 ```shell=
-./prometheus --config.file=prometheus.yml &
+./prometheus --config.file=prometheus.yml
+```
+4. 訪問頁面
+```
+http://{YOUR_IP}:9090
 ```
 
 ### 監控 Node-exporter
+1. 下載＆解壓縮
+```shell=
+wget https://github.com/prometheus/node_exporter/releases/download/v0.18.1/node_exporter-0.18.1.linux-amd64.tar.gz
+
+tar xvfz node_exporter-0.18.1.linux-amd64.tar.gz
+```
+
+2. 執行
+```
+./node_exporter
+```
+
+3. 訪問頁面
+```
+http://{YOUR_IP}:9100
+```
+
+4. 將此 Node 加入 Prometheus 監控
+    - 修改 prometheus.yml
+    - 重起 Prometheus
+```
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: 'prometheus'
+    scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+
+    static_configs:
+    - targets: ['localhost:9090'] # local prometheus
+
+  - job_name: 'other'
+
+    static_configs:
+    - targets: ['localhost:9100'] # 監控 node_exporter
+```
+
+5. 到 Prometheus 查看監控的 targets
+```
+http://{YOUR_IP}:9090/targets
+```
 
 ### Grafana
 
 1. 下載並安裝 Grafana
 ```shell=
-wget https://dl.grafana.com/oss/release/grafana_6.2.2_amd64.deb 
+wget https://dl.grafana.com/oss/release/grafana_6.2.2_amd64.deb
 
 sudo dpkg -i grafana_6.2.2_amd64.deb
 ```
@@ -59,6 +109,19 @@ sudo service grafana-server start
 ```shell=
 sudo update-rc.d grafana-server defaults
 ```
+
+4. 訪問頁面
+```
+http://{YOUR_IP}:3000
+```
+
+5. 登入（預設 admin/admin）
+
+6. Add Data Source(用來載入 Prometheus 的 data)
+    - Configuration > Data Sources > Add data source > 選擇 Prometheus 的按鈕 > 填寫 HTTP URL > Save
+
+7. 選個漂亮的 Dashboard!
+
 
 ### PushGateWay
 
