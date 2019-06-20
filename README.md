@@ -1,4 +1,5 @@
 # Monitoring-Server
+- [Slides](https://docs.google.com/presentation/d/1zxTj3459aKdXk7VoAY3JxPIpYj8YFihN2kO6Od0LBsY/edit?usp=sharing)
 
 ## 專案簡介
 - 隨著部署/管理 伺服器的增加，對於一天只有24小時的猴子，無法實時知道伺服器的狀態，但隨著猴子的進化，還有更強大的猴子開發了強大的工具——「Prometheus」、「Grafana」。
