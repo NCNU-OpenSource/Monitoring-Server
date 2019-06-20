@@ -224,9 +224,9 @@ autocannon -c 100 -d 10 -p 2 http://127.0.0.1:3001/
 
 
 ## 分工
-- [李禹叡]()：PromQL 壓力測試
-- [王俊傑]()：部署環境及測試
-- [覃融亮]()：Study Prometheuse
+- [王俊傑]()：部署環境、測試可行性、接 Telegram Bot API
+- [李禹叡]()：共同 Study PromQL、Prometheuse、壓力測試
+- [覃融亮]()：共同 Study PromQL、Prometheuse、壓力測試
 
 ## Reference
 
