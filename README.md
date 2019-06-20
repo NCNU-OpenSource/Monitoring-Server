@@ -26,10 +26,37 @@ tar xvfz prometheus-2.10.0.linux-amd64.tar.gz
 cd prometheus-2.10.0.linux-amd64
 ```
 
-2. 設定 prometheus.yml
-- `可以不用設定`
+2. 設定 prometheus.yml <增加監控點>
 ```shell=
+# my global config
+global:
+  scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  # scrape_timeout is set to the global default (10s).
 
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      # - alertmanager:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: 'prometheus'
+
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+
+    static_configs:
+    - targets: ['localhost:9090', 'localhost:9091', 'localhost:9100']
 ```
 3. 執行 prometheus (背景執行)
 ```shell=
@@ -167,6 +194,18 @@ do
 done <<< "$z"
 curl -X POST -H  "Content-Type: text/plain" --data "$var
 " http://localhost:9091/metrics/job/memory/instance/main_server
+```
+
+### Node_exporter
+```bash=
+## 下載
+wget https://github.com/prometheus/node_exporter/releases/download/v0.18.1/node_exporter-0.18.1.linux-amd64.tar.gz
+## 解壓縮
+tar -zxvf node_exporter-0.18.1.linux-amd64.tar.gz
+## 切換路徑
+cd node_exporter-0.18.1.linux-amd64
+## 執行 node_exporter
+./node_exporter &
 ```
 
 ### AlertManager(未使用到)
