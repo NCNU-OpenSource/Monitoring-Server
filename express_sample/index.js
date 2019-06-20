@@ -12,7 +12,7 @@ app.get('/', function (req, res) {
 
 app.get('/mem', function (req, res) {
     var tmpData = Buffer.alloc(1024 * 1024 * 1500, 0);
-    res.send("Use 1.5G Men");
+    res.send("Use 1.5G Me");
 });
 
 
