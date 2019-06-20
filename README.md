@@ -168,6 +168,17 @@ curl -X POST -H  "Content-Type: text/plain" --data "$var
 " http://localhost:9091/metrics/job/memory/instance/main_server
 ```
 
+### AlertManager(未使用到)
+```bash=
+wget https://github.com/prometheus/alertmanager/releases/download/v0.17.0/alertmanager-0.17.0.linux-amd64.tar.gz
+
+tar -zxvf alertmanager-0.17.0.linux-amd64.tar.gz
+
+cd alertmanager-0.17.0.linux-amd64
+
+./alertmanager &
+```
+
 ## 範例 API
 方便檢測監控 server 的 CPU/Memory 使用狀況
 
@@ -213,9 +224,9 @@ autocannon -c 100 -d 10 -p 2 http://127.0.0.1:3001/
 
 
 ## 分工
-- [李禹叡]()：PromQL
+- [李禹叡]()：PromQL 壓力測試
 - [王俊傑]()：部署環境及測試
-- [覃融亮]()：
+- [覃融亮]()：Study Prometheuse
 
 ## Reference
 
