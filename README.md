@@ -230,6 +230,8 @@ cd alertmanager-0.17.0.linux-amd64
 ```
 npm install
 
+cd ./express_sample
+
 node index.js
 ```
 
@@ -243,6 +245,7 @@ npm install autocannon -g
 ```
 
 #### Use
+
 ```
 autocannon -c 100 -d 10 -p 2 http://127.0.0.1:3001/
 ```
