@@ -1,3 +1,7 @@
+# 更詳細的 Prometheus 指南 Reference！
+
+- [The deinitive guide to prometheus in 2019](https://devconnected.com/the-definitive-guide-to-prometheus-in-2019/)
+
 # Monitoring-Server
 - [Slides](https://docs.google.com/presentation/d/1zxTj3459aKdXk7VoAY3JxPIpYj8YFihN2kO6Od0LBsY/edit?usp=sharing)
 
